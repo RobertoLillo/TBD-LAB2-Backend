@@ -41,18 +41,18 @@ public class VolunteerController {
     }
 
     @GetMapping("/api/v1/volunteers/{id}")
-    public Volunteer selectVolunteerById(@PathVariable("id") UUID id) {
-        return volunteerService.selectVolunteerById(id).orElse(null);
+    public Volunteer selectVolunteerByRut(@PathVariable("rut") int rut) {
+        return volunteerService.selectVolunteerByRut(rut).orElse(null);
     }
 
     @PutMapping("/api/v1/volunteers/name/{id}")
-    public void updateVolunteerNameById(@PathVariable("id") UUID id, @Valid @NonNull Volunteer volunteer) {
-        volunteerService.updateVolunteerNameById(id, volunteer);
+    public void updateVolunteerNameByRut(@PathVariable("rut") int rut, @Valid @NonNull Volunteer volunteer) {
+        volunteerService.updateVolunteerNameByRut(rut, volunteer);
     }
 
     @DeleteMapping("/api/v1/volunteers/{id}")
-    public void deleteVolunteerById(@PathVariable("id") UUID id) {
-        volunteerService.deleteVolunteer(id);
+    public void deleteVolunteerById(@PathVariable("rut") int rut) {
+        volunteerService.deleteVolunteerByRut(rut);
     }
 
     // Others

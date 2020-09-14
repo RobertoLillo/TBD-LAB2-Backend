@@ -17,11 +17,11 @@ public interface VolunteerDao {
 
     List<Volunteer> selectAllVolunteers();
 
-    Optional<Volunteer> selectVolunteerById(UUID id);
+    Optional<Volunteer> selectVolunteerByRut(int id);
 
-    int updateVolunteerNameById(UUID id, Volunteer volunteer);
+    int updateVolunteerNameByRut(int rut, Volunteer volunteer);
 
-    int deleteVolunteerById(UUID id);
+    int deleteVolunteerByRut(int rut);
 
     List<Volunteer> selectAllVolunteersByAbility(UUID idAbility);
 

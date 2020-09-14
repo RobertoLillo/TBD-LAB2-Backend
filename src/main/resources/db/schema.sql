@@ -32,6 +32,10 @@ CREATE TABLE volunteers_abilities
 ----------------------------------------------------------------------------------
 INSERT INTO volunteers VALUES ('4a995f8c-a3a5-11ea-bb37-0242ac130002', '7888641', 'Claudia Castillo');
 
+INSERT INTO volunteers VALUES ('4a9967e8-a3a5-11ea-bb37-0242ac130002', '24672223', 'Andrés Núñez');
+
+INSERT INTO volunteers VALUES ('4a996cac-a3a5-11ea-bb37-0242ac130002', '14558915', 'Ximena Gallardo');
+
 INSERT INTO volunteers VALUES ('4a9961a8-a3a5-11ea-bb37-0242ac130002', '10912578', 'Jorge Rosales');
 
 INSERT INTO volunteers VALUES ('4a99628e-a3a5-11ea-bb37-0242ac130002', '8942032', 'Mónica Pascual');
@@ -44,13 +48,9 @@ INSERT INTO volunteers VALUES ('4a99666c-a3a5-11ea-bb37-0242ac130002', '9781759'
 
 INSERT INTO volunteers VALUES ('4a99672a-a3a5-11ea-bb37-0242ac130002', '22380438', 'Laura Morales');
 
-INSERT INTO volunteers VALUES ('4a9967e8-a3a5-11ea-bb37-0242ac130002', '24672223', 'Andrés Núñez');
-
 INSERT INTO volunteers VALUES ('4a99689c-a3a5-11ea-bb37-0242ac130002', '6917247', 'Ernesto Castro');
 
 INSERT INTO volunteers VALUES ('4a996bb2-a3a5-11ea-bb37-0242ac130002', '21147439', 'Alan Pastor');
-
-INSERT INTO volunteers VALUES ('4a996cac-a3a5-11ea-bb37-0242ac130002', '14558915', 'Ximena Gallardo');
 
 INSERT INTO volunteers VALUES ('4a996d6a-a3a5-11ea-bb37-0242ac130002', '24846354', 'Alonzo Diaz');
 

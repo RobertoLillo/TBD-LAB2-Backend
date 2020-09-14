@@ -29,16 +29,16 @@ public class VolunteerService {
         return volunteerDao.selectAllVolunteers();
     }
 
-    public Optional<Volunteer> selectVolunteerById(UUID id) {
-        return volunteerDao.selectVolunteerById(id);
+    public Optional<Volunteer> selectVolunteerByRut(int rut) {
+        return volunteerDao.selectVolunteerByRut(rut);
     }
 
-    public int updateVolunteerNameById(UUID id, Volunteer volunteer) {
-        return volunteerDao.updateVolunteerNameById(id, volunteer);
+    public int updateVolunteerNameByRut(int rut, Volunteer volunteer) {
+        return volunteerDao.updateVolunteerNameByRut(rut, volunteer);
     }
 
-    public int deleteVolunteer(UUID id) {
-        return volunteerDao.deleteVolunteerById(id);
+    public int deleteVolunteerByRut(int rut) {
+        return volunteerDao.deleteVolunteerByRut(rut);
     }
 
     public List<Volunteer> selectAllVolunteersByAbility(UUID id) {
