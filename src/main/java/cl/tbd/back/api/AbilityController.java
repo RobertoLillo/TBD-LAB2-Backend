@@ -55,4 +55,9 @@ public class AbilityController {
         abilityService.deleteAbilityById(id);
     }
 
+    @GetMapping("/api/v1/abilities/byRut/{rut}")
+    public List<Ability> selectAbilitiesByRut(@PathVariable("rut") int rut) {
+        return abilityService.selectAbilitiesByRut(rut);
+    }
+
 }

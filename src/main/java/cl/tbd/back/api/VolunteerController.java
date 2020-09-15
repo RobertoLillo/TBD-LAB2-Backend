@@ -1,7 +1,6 @@
 package cl.tbd.back.api;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -40,30 +39,24 @@ public class VolunteerController {
         return volunteerService.selectAllVolunteers();
     }
 
-    @GetMapping("/api/v1/volunteers/{id}")
+    @GetMapping("/api/v1/volunteers/{rut}")
     public Volunteer selectVolunteerByRut(@PathVariable("rut") int rut) {
         return volunteerService.selectVolunteerByRut(rut).orElse(null);
     }
 
-    @PutMapping("/api/v1/volunteers/name/{id}")
+    @PutMapping("/api/v1/volunteers/name/{rut}")
     public void updateVolunteerNameByRut(@PathVariable("rut") int rut, @Valid @NonNull Volunteer volunteer) {
         volunteerService.updateVolunteerNameByRut(rut, volunteer);
     }
 
-    @DeleteMapping("/api/v1/volunteers/{id}")
+    @DeleteMapping("/api/v1/volunteers/{rut}")
     public void deleteVolunteerById(@PathVariable("rut") int rut) {
         volunteerService.deleteVolunteerByRut(rut);
     }
 
-    // Others
+    @GetMapping("/api/v1/volunteers/byName/{name}")
+    public List<Volunteer> selectVolunteerByName(@PathVariable("name") String name) {
+        return volunteerService.selectVolunteerByName(name);
+    }
 
-    @GetMapping("/api/v1/volunteers/byAbility/{id}")
-    public List<Volunteer> selectAllVolunteersByAbility(@PathVariable("id") UUID id) {
-        return volunteerService.selectAllVolunteersByAbility(id);
-    }
-    
-    @GetMapping("/api/v1/volunteers/byEmergency/{id}")
-    public List<Volunteer> selectAllVolunteersByEmergency(@PathVariable("id") UUID id) {
-        return volunteerService.selectAllVolunteersByEmergency(id);
-    }
 }

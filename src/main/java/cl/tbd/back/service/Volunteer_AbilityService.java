@@ -1,7 +1,6 @@
 package cl.tbd.back.service;
 
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,10 +25,6 @@ public class Volunteer_AbilityService {
 
     public List<Volunteer_Ability> selectAllVolunteers_Abilities() {
         return volunteer_AbilityDao.selectAllVolunteers_Abilities();
-    }
-
-    public int deleteVolunteer_AbilityById(UUID id) {
-        return volunteer_AbilityDao.deleteVolunteer_AbilityById(id);
     }
 
 }

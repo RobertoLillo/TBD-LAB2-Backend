@@ -40,5 +40,9 @@ public class AbilityService {
     public int deleteAbilityById(UUID id) {
         return abilityDao.deleteAbilityById(id);
     }
+
+    public List<Ability> selectAbilitiesByRut(int rut) {
+        return abilityDao.selectAbilitiesByRut(rut);
+    }
  
 }

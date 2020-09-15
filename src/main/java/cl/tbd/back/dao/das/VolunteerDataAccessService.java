@@ -2,7 +2,6 @@ package cl.tbd.back.dao.das;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,7 +15,7 @@ import cl.tbd.back.dao.VolunteerDao;
 import cl.tbd.back.model.Volunteer;
 
 @Repository("postgresVolunteer")
-public class VolunteerDataAccessService implements VolunteerDao{
+public class VolunteerDataAccessService implements VolunteerDao {
 
     @Autowired
     @Qualifier("db1")
@@ -31,27 +30,22 @@ public class VolunteerDataAccessService implements VolunteerDao{
     private Sql2o db3;
 
     @Override
-    public int insertVolunteer(UUID id, Volunteer volunteer) {
-        final String sql = "INSERT INTO volunteers (id, rut, name) VALUES (:id, :rut, :name)";
+    public int insertVolunteer(Volunteer volunteer) {
+        final String sql = "INSERT INTO volunteers (rut, name) VALUES (:rut, :name)";
         Connection source;
 
         if (volunteer.getRut() % 3 == 0) {
             source = db1.open(); // Búsqueda en database 1
-        }
-        else if (volunteer.getRut() % 3 == 1) {
+        } else if (volunteer.getRut() % 3 == 1) {
             source = db2.open(); // Búsqueda en database 2
-        }
-        else { //if (volunteer.getRut() % 3 == 2) {
+        } else { // if (volunteer.getRut() % 3 == 2) {
             source = db3.open(); // Búsqueda en database 3
         }
 
-        source.createQuery(sql)
-            .addParameter("id", id)
-            .addParameter("rut", volunteer.getRut())
-            .addParameter("name", volunteer.getName())
-            .executeUpdate();
+        source.createQuery(sql).addParameter("rut", volunteer.getRut()).addParameter("name", volunteer.getName())
+                .executeUpdate();
         return 0;
-        
+
     }
 
     @Override
@@ -61,15 +55,15 @@ public class VolunteerDataAccessService implements VolunteerDao{
 
         // Búsqueda en database 1
         source = db1.open();
-        List<Volunteer> db1List= source.createQuery(sql).executeAndFetch(Volunteer.class);
+        List<Volunteer> db1List = source.createQuery(sql).executeAndFetch(Volunteer.class);
 
         // Búsqueda en database 2
         source = db2.open();
-        List<Volunteer> db2List= source.createQuery(sql).executeAndFetch(Volunteer.class);
+        List<Volunteer> db2List = source.createQuery(sql).executeAndFetch(Volunteer.class);
 
         // Búsqueda en database 3
         source = db3.open();
-        List<Volunteer> db3List= source.createQuery(sql).executeAndFetch(Volunteer.class);
+        List<Volunteer> db3List = source.createQuery(sql).executeAndFetch(Volunteer.class);
 
         List<Volunteer> temp = Stream.concat(db1List.stream(), db2List.stream()).collect(Collectors.toList());
         List<Volunteer> result = Stream.concat(temp.stream(), db3List.stream()).collect(Collectors.toList());
@@ -84,18 +78,14 @@ public class VolunteerDataAccessService implements VolunteerDao{
 
         if (rut % 3 == 0) {
             source = db1.open(); // Búsqueda en database 1
-        }
-        else if (rut % 3 == 1) {
+        } else if (rut % 3 == 1) {
             source = db2.open(); // Búsqueda en database 2
-        }
-        else{ //if (rut % 3 == 2)
+        } else { // if (rut % 3 == 2)
             source = db3.open(); // Búsqueda en database 3
         }
 
-        return source.createQuery(sql)
-            .addParameter("rut", rut)
-            .executeAndFetch(Volunteer.class).stream().findFirst();
-        
+        return source.createQuery(sql).addParameter("rut", rut).executeAndFetch(Volunteer.class).stream().findFirst();
+
     }
 
     @Override
@@ -105,18 +95,13 @@ public class VolunteerDataAccessService implements VolunteerDao{
 
         if (rut % 3 == 0) {
             source = db1.open(); // Búsqueda en database 1
-        }
-        else if (rut % 3 == 1) {
+        } else if (rut % 3 == 1) {
             source = db2.open(); // Búsqueda en database 2
-        }
-        else{ //if (rut % 3 == 2)
+        } else { // if (rut % 3 == 2)
             source = db3.open(); // Búsqueda en database 3
         }
 
-        source.createQuery(sql)
-            .addParameter("rut", rut)
-            .addParameter("name", volunteer.getName())
-            .executeUpdate();
+        source.createQuery(sql).addParameter("rut", rut).addParameter("name", volunteer.getName()).executeUpdate();
         return 0;
     }
 
@@ -127,51 +112,37 @@ public class VolunteerDataAccessService implements VolunteerDao{
 
         if (rut % 3 == 0) {
             source = db1.open(); // Búsqueda en database 1
-        }
-        else if (rut % 3 == 1) {
+        } else if (rut % 3 == 1) {
             source = db2.open(); // Búsqueda en database 2
-        }
-        else{ //if (rut % 3 == 2)
+        } else { // if (rut % 3 == 2)
             source = db3.open(); // Búsqueda en database 3
         }
 
-        source.createQuery(sql)
-            .addParameter("rut", rut)
-            .executeUpdate();
+        source.createQuery(sql).addParameter("rut", rut).executeUpdate();
         return 0;
     }
 
-    // Other methods
+    @Override
+    public List<Volunteer> selectVolunteersByName(String name) {
+        final String sql = "SELECT * FROM volunteers WHERE name LIKE :name";
+        final String search = "%" + name + "%";
+        Connection source;
 
-    @Override
-    public List<Volunteer> selectAllVolunteersByAbility(UUID idAbility) {
-        String sql1 = "SELECT DISTINCT id, name FROM volunteers ";
-        String sql2 = "INNER JOIN ";
-            String sql3 = "(SELECT id_volunteer FROM volunteers_abilities WHERE id_ability = :id_ability) AS vol_abi ";
-        String sql4 = "ON volunteers.id = vol_abi.id_volunteer";
-        final String sql = sql1 + sql2 + sql3 +sql4;
-        try (Connection con = db1.open()) {
-            return con.createQuery(sql)
-                .addParameter("id_ability", idAbility)
-                .executeAndFetch(Volunteer.class);
-        }
+        // Búsqueda en database 1
+        source = db1.open();
+        List<Volunteer> db1List = source.createQuery(sql).addParameter("name", search).executeAndFetch(Volunteer.class);
+
+        // Búsqueda en database 2
+        source = db2.open();
+        List<Volunteer> db2List = source.createQuery(sql).addParameter("name", search).executeAndFetch(Volunteer.class);
+
+        // Búsqueda en database 3
+        source = db3.open();
+        List<Volunteer> db3List = source.createQuery(sql).addParameter("name", search).executeAndFetch(Volunteer.class);
+
+        List<Volunteer> temp = Stream.concat(db1List.stream(), db2List.stream()).collect(Collectors.toList());
+        List<Volunteer> result = Stream.concat(temp.stream(), db3List.stream()).collect(Collectors.toList());
+        return result;
     }
-    
-    @Override
-    public List<Volunteer> selectAllVolunteersByEmergency(UUID idEmergency) {
-        String sql1 = "SELECT DISTINCT id, name FROM volunteers ";
-        String sql2 = "INNER JOIN ";
-            String sql3 = "(SELECT id_volunteer, id_task FROM rankings ";
-            String sql4 = "INNER JOIN ";
-                String sql5 = "(SELECT id FROM tasks WHERE id_emergency = :id_emergency) AS tas ";
-            String sql6 = "ON rankings.id_task = tas.id AND flag_participated = true) as ran ";
-        String sql7 = "ON volunteers.id = ran.id_volunteer";
-        final String sql = sql1 + sql2 + sql3 +sql4 + sql5 + sql6 + sql7;
-        try (Connection con = db1.open()) {
-            return con.createQuery(sql)
-                .addParameter("id_emergency", idEmergency)
-                .executeAndFetch(Volunteer.class);
-        }
-    }
-    
+
 }

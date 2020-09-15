@@ -2,7 +2,6 @@ package cl.tbd.back.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -41,12 +40,8 @@ public class VolunteerService {
         return volunteerDao.deleteVolunteerByRut(rut);
     }
 
-    public List<Volunteer> selectAllVolunteersByAbility(UUID id) {
-        return volunteerDao.selectAllVolunteersByAbility(id);
-    }
-
-    public List<Volunteer> selectAllVolunteersByEmergency(UUID id) {
-        return volunteerDao.selectAllVolunteersByEmergency(id);
+    public List<Volunteer> selectVolunteerByName(String name) {
+        return volunteerDao.selectVolunteersByName(name);
     }
 
 }

@@ -23,4 +23,5 @@ public interface AbilityDao {
 
     int deleteAbilityById(UUID id);
 
+    List<Ability> selectAbilitiesByRut(int rut);
 }

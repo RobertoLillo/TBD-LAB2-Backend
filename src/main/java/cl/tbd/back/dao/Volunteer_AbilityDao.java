@@ -16,6 +16,4 @@ public interface Volunteer_AbilityDao {
 
     List<Volunteer_Ability> selectAllVolunteers_Abilities();
 
-    int deleteVolunteer_AbilityById(UUID id);
-
 }
