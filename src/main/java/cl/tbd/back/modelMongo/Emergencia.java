@@ -29,11 +29,11 @@ public class Emergencia {
         this.nombre = nombre;
     }
 
-    public String getDescrip() {
+    public String getDescripcion() {
         return this.descripcion;
     }
 
-    public void setDescrip(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
