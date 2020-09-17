@@ -17,21 +17,21 @@ public class TareaRepositoryImp implements TareaRepository {
     
     @Override
     public Tarea createTarea(Tarea tarea) {
-        MongoCollection<Tarea> tareas = database.getCollection("Tarea", Tarea.class);
+        MongoCollection<Tarea> tareas = database.getCollection("tarea", Tarea.class);
         tareas.insertOne(tarea);
         return tarea;
     }
 
     @Override
     public int countTarea() {
-        MongoCollection<Document> tareas = database.getCollection("Tarea");
+        MongoCollection<Document> tareas = database.getCollection("tarea");
         long total_tareas = tareas.countDocuments();
         return (int) total_tareas;
     }
 
     @Override
     public List<Tarea> getTarea() {
-        MongoCollection<Tarea> tareas = database.getCollection("Tarea", Tarea.class);
+        MongoCollection<Tarea> tareas = database.getCollection("tarea", Tarea.class);
         List<Tarea> Tareas = tareas.find().into(new ArrayList<>());
         return Tareas;
     }
