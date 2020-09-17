@@ -1,9 +1,7 @@
 package cl.tbd.back.modelMongo;
 
-import net.minidev.json.annotate.JsonIgnore;
 import org.bson.types.ObjectId;
 import org.bson.codecs.pojo.annotations.BsonId;
-import org.springframework.data.annotation.Id;
 
 public class Tarea {
 

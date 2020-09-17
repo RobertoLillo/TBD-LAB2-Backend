@@ -12,8 +12,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 
 @Configuration
-public class Configuration {
-@Bean
+public class ConfigurationMongo {
+    @Bean
     MongoDatabase database(){
         CodecRegistry defaultCodecRegistry = MongoClientSettings.getDefaultCodecRegistry();
         CodecRegistry fromProvider = CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build());

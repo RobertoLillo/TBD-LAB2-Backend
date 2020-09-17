@@ -2,7 +2,6 @@ package cl.tbd.back.serviceMongo;
 
 import cl.tbd.back.modelMongo.Tarea;
 import cl.tbd.back.repositoryMongo.TareaRepository;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

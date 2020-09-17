@@ -1,7 +1,5 @@
 package cl.tbd.back.serviceMongo;
 
-import com.mongodb.Block;
-import com.mongodb.client.AggregateIterable;
 import cl.tbd.back.repositoryMongo.AgreggateRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

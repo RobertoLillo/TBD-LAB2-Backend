@@ -1,13 +1,9 @@
 package cl.tbd.back.modelMongo;
 
-import net.minidev.json.annotate.JsonIgnore;
 import org.bson.types.ObjectId;
 import org.bson.codecs.pojo.annotations.BsonId;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class Emergencia {
     @BsonId
