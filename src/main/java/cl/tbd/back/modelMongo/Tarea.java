@@ -13,7 +13,7 @@ public class Tarea {
     private String descripcion;
     private String finicio;
     private String ffin;
-    private Bool estado;
+    private Boolean estado;
 
     public ObjectId getId() {
         return this._id;
@@ -52,11 +52,11 @@ public class Tarea {
         this.ffin = ffin;
     }
 
-    public Bool getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Bool estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 
