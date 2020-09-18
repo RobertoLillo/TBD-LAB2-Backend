@@ -18,9 +18,9 @@ En este se debe indicar la dirección de la base de datos (por defecto viene con
 
 2) Dentro del directorio TBD-Backend/src/main/resources/db se encuentran 3 archivos sql:
 
-  - TBDBACK1.sql.
-  - TBDBACK2.sql.
-  - TBDBACK3.sql.
+  - TBDBACK1.sql
+  - TBDBACK2.sql
+  - TBDBACK3.sql
 
   Cada uno corresponde al dump de la base de datos utilizada para la paralelización. Estos deben ser restaurados en postgres
   antes de realizar alguna prueba con el backend. Para esto primero crear las tres bases de datos con los mismos nombres de
@@ -29,7 +29,7 @@ En este se debe indicar la dirección de la base de datos (por defecto viene con
 
 ## Cómo iniciar
 ```
-Dirigirse a al directorio TBD-Backend y ejecutar:
+Dirigirse a al directorio TBD-LAB2-Backend y ejecutar:
 
 $ mvn spring-boot:run
 
